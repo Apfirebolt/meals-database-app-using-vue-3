@@ -18,7 +18,6 @@ import { onMounted } from 'vue';
 export default {
   setup() {
     const { getAreasList, areas } = useArea();
-
     onMounted(() => {
       getAreasList();
     });

@@ -1,23 +1,31 @@
-import axios from 'axios';
+import httpClient from '../common/interceptor';
 import { ref } from 'vue';
 
 export default function useMeal() {
   const meals = ref([]);
-  const randomMeal = ref();
   const total = ref();
   const success = ref();
   const error = ref();
 
-  const getRandomMeal = async () => {
-      
-  }
-
-  const getMealList = async () => {
+  const getMealListByLetter = async (letter = 'a') => {
     try {
-      const { data } = await axios.get('/search.php?s=Arrabiata');
+      const { data } = await httpClient.get('/search.php?f=' + letter);
       success.value = true;
       error.value = undefined;
-      meals.value = data.results;
+      meals.value = data.meals;
+      total.value = data.rowsNumber;
+    } catch (err) {
+      success.value = false;
+      error.value = err;
+    }
+  };
+
+  const getMealListByName = async (name) => {
+    try {
+      const { data } = await httpClient.get('/search.php?s=' + name);
+      success.value = true;
+      error.value = undefined;
+      meals.value = data.meals;
       total.value = data.rowsNumber;
     } catch (err) {
       success.value = false;
@@ -26,7 +34,8 @@ export default function useMeal() {
   };
 
   return {
-    getMealList,
+    getMealListByLetter,
+    getMealListByName,
     meals,
     total,
     success,

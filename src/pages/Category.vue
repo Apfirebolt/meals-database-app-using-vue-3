@@ -3,7 +3,7 @@
     <div class="col-12">
       <div class="card">
         <h5>Category Page</h5>
-        <Chip v-for="category in categories" :key="category.strCategory" class="mr-4 mb-4 px-3 py-2 bg-red-500">
+        <Chip v-for="category in categories" :key="category.strCategory" class="mr-4 mb-4 px-3 py-2">
           {{ category.strCategory }}
         </Chip>
       </div>
