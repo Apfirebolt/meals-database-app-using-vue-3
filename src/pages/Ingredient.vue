@@ -2,11 +2,21 @@
   <div class="grid">
     <div class="col-12">
       <div class="card">
-        <h5>Ingredient Page</h5>
-        <p>
-          This would list all ingredients
-        </p>
-        {{ ingredients }}
+       <DataTable :value="ingredients" :paginator="true" :rows="10"
+            paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
+            :rowsPerPageOptions="[10, 20]" responsiveLayout="scroll"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords}">
+            <Column field="idIngredient" header="ID"></Column>
+            <Column field="strIngredient" header="Name"></Column>
+            <Column field="strDescription" header="Description"></Column>
+            <template #paginatorstart>
+                <Button type="button" icon="pi pi-refresh" class="p-button-text" />
+            </template>
+            <template #paginatorend>
+                <Button type="button" icon="pi pi-cloud" class="p-button-text" />
+            </template>
+        </DataTable>    
+        
       </div>
     </div>
   </div>
@@ -19,7 +29,6 @@ import { onMounted } from 'vue';
 export default {
   setup() {
     const { getIngredientList, ingredients } = useIngredient();
-    console.log("Inside ingredient..");
 
     onMounted(() => {
       getIngredientList();
@@ -33,3 +42,4 @@ export default {
 </script>
 
 <style scoped></style>
+

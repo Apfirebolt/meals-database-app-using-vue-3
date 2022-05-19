@@ -3,10 +3,9 @@
     <div class="col-12">
       <div class="card">
         <h5>Area Page</h5>
-        <p>
-          {{ areas }}
-        </p>
-
+        <Chip v-for="area in areas" :key="area.strArea" class="mr-4 mb-4 px-3 py-2">
+          {{ area.strArea }}
+        </Chip>
       </div>
     </div>
   </div>
@@ -19,14 +18,13 @@ import { onMounted } from 'vue';
 export default {
   setup() {
     const { getAreasList, areas } = useArea();
-    console.log("Inside ingredient..");
 
     onMounted(() => {
       getAreasList();
     });
 
     return {
-        areas
+      areas
     }
   },
 };
