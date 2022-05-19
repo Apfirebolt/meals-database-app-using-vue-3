@@ -9,7 +9,7 @@
               <i class="pi pi-search" />
               <InputText
                 type="text"
-                placeholder="Search Meal by Name"
+                placeholder="Name"
                 v-model="searchText"
               />
             </span>
@@ -25,7 +25,7 @@
               <i class="pi pi-search" />
               <InputText
                 type="text"
-                placeholder="Search Meal by First Letter"
+                placeholder="Letter"
                 v-model="firstLetter"
               />
             </span>
