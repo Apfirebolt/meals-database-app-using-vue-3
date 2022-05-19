@@ -3,9 +3,24 @@
     <div class="col-12">
       <div class="card">
         <h5>Category Page</h5>
-        <Chip v-for="category in categories" :key="category.strCategory" class="mr-4 mb-4 px-3 py-2">
-          {{ category.strCategory }}
-        </Chip>
+        <DataTable :value="categories" responsiveLayout="scroll">
+          <Column field="strCategory" header="Name"></Column>
+          <Column header="Image">
+            <template #body="slotProps">
+              <img
+                :src="slotProps.data.strCategoryThumb"
+                :alt="slotProps.data.strCategory"
+                height="100"
+                width="150"
+              />
+            </template>
+          </Column>
+          <Column field="strCategoryDescription" header="Category Description"></Column>
+
+          <template #footer>
+            In total there are {{ categories ? categories.length : 0 }} categories.
+          </template>
+        </DataTable>
       </div>
     </div>
   </div>

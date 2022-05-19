@@ -9,10 +9,10 @@ export default function useCategory() {
 
   const getCategoriesList = async () => {
     try {
-      const { data } = await httpClient.get('/list.php?c=list');
+      const { data } = await httpClient.get('/categories.php');
       success.value = true;
       error.value = undefined;
-      categories.value = data.meals;
+      categories.value = data.categories;
       total.value = data.rowsNumber;
     } catch (err) {
       success.value = false;
