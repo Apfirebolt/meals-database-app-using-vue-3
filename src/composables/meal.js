@@ -46,11 +46,39 @@ export default function useMeal() {
       error.value = err;
     }
   };
+  
+  const filterMealByCategory = async (category) => {
+    try {
+      const { data } = await httpClient.get('/filter.php?c=' + category);
+      success.value = true;
+      error.value = undefined;
+      meals.value = data.meals;
+      total.value = data.rowsNumber;
+    } catch (err) {
+      success.value = false;
+      error.value = err;
+    }
+  };
+
+  const filterMealByLocation = async (location) => {
+    try {
+      const { data } = await httpClient.get('/filter.php?a=' + location);
+      success.value = true;
+      error.value = undefined;
+      meals.value = data.meals;
+      total.value = data.rowsNumber;
+    } catch (err) {
+      success.value = false;
+      error.value = err;
+    }
+  };
 
 
   return {
     getMealListByLetter,
     getMealListByName,
+    filterMealByCategory,
+    filterMealByLocation,
     getRandomMeal,
     meals,
     meal,

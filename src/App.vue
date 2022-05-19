@@ -43,10 +43,10 @@ export default {
 				{
 					label: 'Pages', icon: 'pi pi-fw pi-clone',
 					items: [
-                        {label: 'Category', icon: 'pi pi-fw pi-circle-off', to: '/category'},
+                        {label: 'Category', icon: 'pi pi-fw pi-send', to: '/category'},
                         {label: 'Meals', icon: 'pi pi-fw pi-circle-off', to: '/meals'},
-                        {label: 'Ingredients', icon: 'pi pi-fw pi-circle-off', to: '/ingredients'},
-                        {label: 'Areas', icon: 'pi pi-fw pi-circle-off', to: '/areas'}
+                        {label: 'Ingredients', icon: 'pi pi-fw pi-tablet', to: '/ingredients'},
+                        {label: 'Areas', icon: 'pi pi-fw pi-map-marker', to: '/areas'}
 					]
 				},
             ]

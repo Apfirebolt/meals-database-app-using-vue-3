@@ -2,7 +2,7 @@
   <div class="grid">
     <div class="col-12">
       <div class="card">
-        <h5>Category Page</h5>
+        <h5>Categories</h5>
         <DataTable :value="categories" responsiveLayout="scroll">
           <Column field="strCategory" header="Name"></Column>
           <Column header="Image">
