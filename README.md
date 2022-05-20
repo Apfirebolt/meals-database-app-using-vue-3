@@ -10,7 +10,7 @@ I wanted to experiment with the composition API and hooks based approach of API 
 
 As for UI, I try to experiment with different UI frameworks available for Vue. In this case, I went with PrimeVue. I found it relatively easy to get started with, has a wide range of components to offer and a nice color schema.
 
-This project takes inspiration from Sakai Vue template created using PrimeVue. It is an open source admin template. It has multiple themes in it which can be changed through the button on the right side of the screen. It has various colors and their versions, light and dark themes are also available.
+This project takes inspiration from Sakai Vue template created using PrimeVue. It is an open source admin template. It has multiple themes in it which can be changed through the button on the right side of the screen. It has various colors and their versions, light and dark themes are also available. That is the reason why 97% of the codebase of this project contains CSS
 
 Made with ❤️ by **[@apfirebolt](https://github.com/Apfirebolt/)**
 
@@ -54,7 +54,7 @@ No issues as of now, would be added later if discovered.
 
 Please find some of the screenshots of the application. The image below displays the homepage of the application, homepage is equipped with API call which would display a random meal for you at the beginning as well as every time you click on the button.
 
-![alt text](./screenshots/home.png)
+![alt text](./screenshots/home.jpg)
 
 Meals page is shown below. Initially it loads all the meals starting with 'a', you can filter meals by name, category, first letter and area.
 
