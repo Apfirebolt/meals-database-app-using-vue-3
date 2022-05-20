@@ -14,7 +14,7 @@
             <Button
               label="Search By Name"
               class="p-button-secondary"
-              @click="getMealListByName(searchText)"
+              @click="getMealListByNameHelper(searchText)"
             />
           </div>
         </div>
@@ -30,7 +30,7 @@
             <Button
               label="Search Meal by Letter"
               class="p-button-secondary"
-              @click="getMealListByLetter(firstLetter)"
+              @click="getMealListByLetterHelper(firstLetter)"
             />
           </div>
           <div class="flex align-items-center justify-content-center">
@@ -46,8 +46,11 @@
             />
           </div>
         </div>
-
-        <DataTable :value="meals" responsiveLayout="scroll">
+        <DataTable
+          v-if="!isFilteringEnabled"
+          :value="meals"
+          responsiveLayout="scroll"
+        >
           <Column field="strArea" header="Area"></Column>
           <Column field="strMeal" header="Name"></Column>
           <Column header="Image">
@@ -71,13 +74,35 @@
             In total there are {{ meals ? meals.length : 0 }} meals.
           </template>
         </DataTable>
+
+        <DataTable v-else :value="meals" responsiveLayout="scroll">
+          <Column field="strMeal" header="Name"></Column>
+          <Column header="Image">
+            <template #body="slotProps">
+              <img
+                :src="slotProps.data.strMealThumb"
+                :alt="slotProps.data.strMeal"
+                height="100"
+                width="150"
+              />
+            </template>
+          </Column>
+
+          <template #footer>
+            In total there are {{ meals ? meals.length : 0 }} meals.
+          </template>
+        </DataTable>
       </div>
     </div>
     <Dialog v-model:visible="isFilterByAreaModalOpened">
-      <filter-by-area-modal @filterMealByLocation="filterMealByLocationHelper" />
+      <filter-by-area-modal
+        @filterMealByLocation="filterMealByLocationHelper"
+      />
     </Dialog>
     <Dialog v-model:visible="isFilterByCategoryModalOpened">
-      <filter-by-category-modal @filterMealByCategory="filterMealByCategoryHelper" />
+      <filter-by-category-modal
+        @filterMealByCategory="filterMealByCategoryHelper"
+      />
     </Dialog>
   </div>
 </template>
@@ -96,23 +121,41 @@ export default {
     FilterByCategoryModal,
   },
   setup() {
-    const { getMealListByLetter, getMealListByName, filterMealByCategory, filterMealByLocation, meals, isLoading } = useMeal();
+    const {
+      getMealListByLetter,
+      getMealListByName,
+      filterMealByCategory,
+      filterMealByLocation,
+      meals,
+      isLoading,
+    } = useMeal();
     const searchText = ref("");
     const firstLetter = ref("");
+    const isFilteringEnabled = ref(false);
     const isFilterByAreaModalOpened = ref(false);
     const isFilterByCategoryModalOpened = ref(false);
 
-    console.log('Is loading now ', isLoading)
+    const getMealListByLetterHelper = (letter) => {
+      isFilteringEnabled.value = false;
+      getMealListByLetter(letter);
+    };
+
+    const getMealListByNameHelper = (name) => {
+      isFilteringEnabled.value = false;
+      getMealListByName(name);
+    };
 
     const filterMealByCategoryHelper = (category) => {
       filterMealByCategory(category);
+      isFilteringEnabled.value = true;
       isFilterByCategoryModalOpened.value = false;
-    }
+    };
 
     const filterMealByLocationHelper = (location) => {
       filterMealByLocation(location);
+      isFilteringEnabled.value = true;
       isFilterByAreaModalOpened.value = false;
-    }
+    };
     onMounted(() => {
       getMealListByLetter();
     });
@@ -122,15 +165,16 @@ export default {
       isLoading,
       searchText,
       firstLetter,
-      getMealListByName,
+      isFilteringEnabled,
+      getMealListByNameHelper,
+      getMealListByLetterHelper,
       getMealListByLetter,
       isFilterByAreaModalOpened,
       isFilterByCategoryModalOpened,
       filterMealByCategoryHelper,
-      filterMealByLocationHelper
+      filterMealByLocationHelper,
     };
   },
 };
 </script>
 
-<style scoped></style>
