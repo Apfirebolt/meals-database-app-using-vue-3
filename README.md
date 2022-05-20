@@ -1,67 +1,53 @@
- #  Sakai Admin Template for Vue            
- 
-### Getting Started
-Sakai is an application template for Vue based on the [Vue CLI](https://cli.vuejs.org/) that provides out-of-the-box standard
-tooling for Vue projects. To get started, clone this repository from GitHub and install the dependencies with npm or yarn.
-                
+![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
+
+# Meals DB application using OpenMealsDB and PrimeVue ⚡️
+
+## Project Briefing
+
+This is a simple database application which integrates with an open source Meals database API <a href="https://www.themealdb.com/api.php"> https://www.themealdb.com/api.php </a> which I found recently. I have worked on other APIs created by this organization like CocktailAPI which has been a pleasant experience for me.
+
+I wanted to experiment with the composition API and hooks based approach of API integration in Vue without the use of Vuex. I needed an open API which I can use as data source for this. I read about this open API in one of the blog posts I stumbled across lately and found this API to be apt for this.
+
+As for UI, I try to experiment with different UI frameworks available for Vue. In this case, I went with PrimeVue. I found it relatively easy to get started with, has a wide range of components to offer and a nice color schema.
+
+Made with ❤️ by **[@apfirebolt](https://github.com/Apfirebolt/)**
+
+Please find me [here](https://apgiiit.com/)
+## Features
+
+- Demonstrates use of various components of PrimeVue like Table, Dialogue, Cards and others.
+- Modern architecture for Vue 3 which follows composition API for organizing various entities within a Vue page.
+
+## Built With
+
+* [Vue](https://reactjs.org/)
+* [Vue 3 Composition API](https://vuejs.org/api/composition-api-setup.html/)
+* [PrimeVue](https://www.primefaces.org/primevue/)
+
+## Project setup
+
+Simply install node modules for the Vue app and you're done at least for the development mode.
+
 ```
 npm install
-```
-
-or
-
-```
-yarn
-```
-
-Next step is running the application using the serve script and navigate to **http://localhost:8080/** to view the application.
-That is it, you may now start with the development of your application using the Sakai template.</p>
-
-```
 npm run serve
 ```
 
-### Vue CLI Scripts
-Following commands are derived from create-app-app.
+For production, build the frontend of the app. 
+
 ```
-"npm run serve": Starts the development server
-"npm run build": Builds the application for deployment.
-"npm run lint": Executes the lint checks.
-"npm run test:unit": Runs the tests.
+npm run build
+npm run serve
 ```
+## Issues
 
-### Structure
-Sakai consists of 2 main parts; the application layout and the resources. **App.vue** inside src folder is the main component containing the template for the base layout whereas required resources such as SASS structure for the layout are placed inside the **src/assets/** folder.</p>
+No issues as of now, would be added later if discovered.
 
-### Layout Components
-Main layout is the template of the **App.vue**, it is divided into a couple of child components such as topbar, menu and footer. Here is template of the
-**App.vue** component that implements the logic such as menu state, layout modes and so on.
+## Future Updates
 
-### Menu
-Menu is a separate component defined in **AppMenu.vue** file based on PrimeVue MenuModel API. In order to define the menuitems,
-navigate to data section of **App.vue** file and define your own model as a nested structure using the **menu** property.
+- Expect UI improvements in near future for this app as I get more familiar with PrimeVue.
+- Docker deployment might be added later.
 
-### Dependencies
-Dependencies of Sakai are listed below and needs to be added to package.json.
+## Project Screenshots
 
-```json
-{
-    "primevue": "~3.7.1",
-    "primeicons": "~4.1.0",
-    "primeflex": "~3.0.0",
-}
-```
-
-### PrimeVue Theme
-Sakai uses the free Saga, Arya and Vela themes which are distributed within PrimeVue, however it can be used with any PrimeVue theme as well such as material, tailwind and bootstrap as layout colors are derived from the theme used via CSS variables.
-
-### SASS Variables
-In case you'd like to customize the layout variables, open **_variables.scss** file under src/layout folder. The list is pretty short as majority of the variables are derived from the PrimeVue theme being used.
-
-**src/assets/_variables.scss**
-```css
-$fontSize:1rem;
-$borderRadius:12px;
-$transitionDuration:.2s;
-$maskBg:rgba(0, 0, 0, 0.4);
-```
+Would be added later
