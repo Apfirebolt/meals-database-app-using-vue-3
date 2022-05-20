@@ -10,11 +10,27 @@ I wanted to experiment with the composition API and hooks based approach of API 
 
 As for UI, I try to experiment with different UI frameworks available for Vue. In this case, I went with PrimeVue. I found it relatively easy to get started with, has a wide range of components to offer and a nice color schema.
 
-This project takes inspiration from Sakai Vue template created using PrimeVue. It is an open source admin template. It has multiple themes in it which can be changed through the button on the right side of the screen. It has various colors and their versions, light and dark themes are also available. That is the reason why 97% of the codebase of this project contains CSS
+This project takes inspiration from Sakai Vue template created using PrimeVue. It is an open source admin template and can be found here https://github.com/primefaces/sakai-vue. It has multiple themes in it which can be changed through the button on the right side of the screen. It has various colors and their versions, light and dark themes are also available. That is the reason why 97% of the codebase of this project contains CSS.
 
 Made with ❤️ by **[@apfirebolt](https://github.com/Apfirebolt/)**
 
 Please find me [here](https://apgiiit.com/)
+
+### PrimeVue Theme
+
+Sakai Admin, which is used to built this uses the free Saga, Arya and Vela themes which are distributed within PrimeVue, however it can be used with any PrimeVue theme as well such as material, tailwind and bootstrap as layout colors are derived from the theme used via CSS variables.
+
+### Dependencies
+
+Following PrimeVue packages are used for this project.
+
+```
+{
+    "primevue": "~3.12.2",
+    "primeicons": "~5.0.0",
+    "primeflex": "~3.1.2",
+}
+```
 ## Features
 
 - Demonstrates use of various components of PrimeVue like Table, Dialogue, Cards and others.
@@ -28,7 +44,7 @@ Please find me [here](https://apgiiit.com/)
 
 ## Project setup
 
-Simply install node modules for the Vue app and you're done at least for the development mode.
+Simply install node modules for the Vue app and you're done at least for the development mode. Next step is running the application using the serve script and navigate to http://localhost:8080/ to view the application. That is it, in my case 8080 was occupied with Jenkins so the app was running on port 8081.
 
 ```
 npm install
