@@ -1,5 +1,5 @@
 <template>
-  <div class="grid">
+  <div v-if="ingredients.length" class="grid">
     <div class="col-12">
       <div class="card">
        <DataTable :value="ingredients" :paginator="true" :rows="10"
@@ -15,18 +15,22 @@
             <template #paginatorend>
                 <Button type="button" icon="pi pi-cloud" class="p-button-text" />
             </template>
-        </DataTable>    
-        
+        </DataTable>
       </div>
     </div>
   </div>
+  <loader v-else />
 </template>
 
 <script>
+import Loader from "../components/Loader.vue";
 import useIngredient from "../composables/ingredient";
 import { onMounted } from 'vue';
 
 export default {
+  components: {
+    Loader
+  },
   setup() {
     const { getIngredientList, ingredients } = useIngredient();
 

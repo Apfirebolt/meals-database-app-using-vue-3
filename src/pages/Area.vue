@@ -1,5 +1,5 @@
 <template>
-  <div class="grid">
+  <div v-if="areas.length" class="grid">
     <div class="col-12">
       <div class="card">
         <h5>Global Area/Location</h5>
@@ -9,13 +9,18 @@
       </div>
     </div>
   </div>
+  <loader v-else />
 </template>
 
 <script>
+import Loader from "../components/Loader.vue";
 import useArea from "../composables/area";
 import { onMounted } from 'vue';
 
 export default {
+  components: {
+    Loader
+  },
   setup() {
     const { getAreasList, areas } = useArea();
     onMounted(() => {

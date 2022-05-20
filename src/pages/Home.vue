@@ -31,14 +31,19 @@
         </Card>
       </div>
     </div>
+    <loader v-else />
   </div>
 </template>
 
 <script>
+import Loader from "../components/Loader.vue";
 import useMeal from "../composables/meal";
 import { onMounted } from "vue";
 
 export default {
+  components: {
+    Loader
+  },
   setup() {
     const { getRandomMeal, meal } = useMeal();
 

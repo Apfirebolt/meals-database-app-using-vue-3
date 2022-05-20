@@ -1,5 +1,5 @@
 <template>
-  <div class="grid">
+  <div v-if="categories.length" class="grid">
     <div class="col-12">
       <div class="card">
         <h5>Categories</h5>
@@ -24,13 +24,18 @@
       </div>
     </div>
   </div>
+  <loader v-else />
 </template>
 
 <script>
+import Loader from "../components/Loader.vue";
 import useCategory from "../composables/category";
 import { onMounted } from "vue";
 
 export default {
+  components: {
+    Loader
+  },
   setup() {
     const { getCategoriesList, categories } = useCategory();
 

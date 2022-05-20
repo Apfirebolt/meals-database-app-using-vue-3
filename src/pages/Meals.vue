@@ -1,6 +1,7 @@
 <template>
   <div class="grid">
-    <div class="col-12">
+    <loader v-if="isLoading" />
+    <div v-else class="col-12">
       <div class="card">
         <h5>Meals</h5>
 
@@ -82,6 +83,7 @@
 </template>
 
 <script>
+import Loader from "../components/Loader.vue";
 import FilterByAreaModal from "../components/FilterAreaModal.vue";
 import FilterByCategoryModal from "../components/FIlterCategoryModal.vue";
 import useMeal from "../composables/meal";
@@ -89,15 +91,18 @@ import { onMounted, ref } from "vue";
 
 export default {
   components: {
+    Loader,
     FilterByAreaModal,
     FilterByCategoryModal,
   },
   setup() {
-    const { getMealListByLetter, getMealListByName, filterMealByCategory, filterMealByLocation, meals } = useMeal();
+    const { getMealListByLetter, getMealListByName, filterMealByCategory, filterMealByLocation, meals, isLoading } = useMeal();
     const searchText = ref("");
     const firstLetter = ref("");
     const isFilterByAreaModalOpened = ref(false);
     const isFilterByCategoryModalOpened = ref(false);
+
+    console.log('Is loading now ', isLoading)
 
     const filterMealByCategoryHelper = (category) => {
       filterMealByCategory(category);
@@ -114,6 +119,7 @@ export default {
 
     return {
       meals,
+      isLoading,
       searchText,
       firstLetter,
       getMealListByName,
