@@ -1,32 +1,23 @@
 <template>
-	<div class="layout-menu-container">
-		<AppSubmenu :items="model" class="layout-menu" :root="true" @menuitem-click="onMenuItemClick" />
-	</div>
+    <nav class="layout-menu-container" aria-label="Main Navigation">
+        <AppSubmenu 
+            :items="model" 
+            class="layout-menu" 
+            :root="true" 
+            @menuitem-click="emit('menuitem-click', $event)" 
+        />
+    </nav>
 </template>
 
-<script>
-import AppSubmenu from './AppSubmenu';
+<script setup>
+import AppSubmenu from './AppSubmenu.vue';
 
-export default {
-	props: {
-		model: Array
-	},
-    methods: {
-        onMenuItemClick(event) {
-            this.$emit('menuitem-click', event);
-        }
-    },
-	computed: {
-		darkTheme() {
-			return this.$appState.theme.startsWith('saga');
-		}
-	},
-	components: {
-		'AppSubmenu': AppSubmenu
-	}
-}
+defineProps({
+    model: {
+        type: Array,
+        default: () => []
+    }
+});
+
+const emit = defineEmits(['menuitem-click']);
 </script>
-
-<style scoped>
-
-</style>
